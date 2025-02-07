@@ -17,7 +17,7 @@
             "diagnostic_test",
             "professional_judgment",
             "epidemiological_history",
-            "demographic"
+            "demographic_criteria"
           ]
         },
         "logical_operator": {
@@ -138,6 +138,12 @@
     "published_at": {
       "type": "string",
       "format": "date-time"
+    },
+    "published_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "location": {
       "type": "string"
