@@ -1,103 +1,213 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Open Syndrome Case Definition Schema",
   "type": "object",
+  "$defs": {
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "criteria",
+            "syndrome",
+            "symptom",
+            "diagnosis",
+            "diagnostic_test",
+            "professional_judgment",
+            "epidemiological_history"
+          ]
+        },
+        "logical_operator": {
+          "type": "string",
+          "enum": [
+            "AND",
+            "OR",
+            "ANDNOT",
+            "AT_LEAST"
+          ]
+        },
+        "logical_operator_arguments": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "==",
+            "!="
+          ]
+        },
+        "regex_pattern": {
+          "type": "string"
+        },
+        "regex_flags": {
+          "type": "string",
+          "pattern": "^[gimsuy]*$"
+        },
+        "code": {
+          "type": "object",
+          "properties": {
+            "system": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "display": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "system",
+            "code"
+          ]
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criterion"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "name"
+          ]
+        },
+        {
+          "required": [
+            "values"
+          ]
+        }
+      ]
+    }
+  },
   "properties": {
-    "title": { "type": "string" },
-    "description": { "type": "string" },
-    "scope": { "type": "string", "enum": ["specific", "broad"] },
-    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-    "open_syndrome_version": { "type": "number" },
-    "publish_in": { "type": "string", "format": "uri" },
-    "published_at": { "type": "string", "format": "date-time" },
-    "location": { "type": "string" },
-    "language": { "type": "string" },
-    "organization": { "type": "string" },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "specific",
+        "broad"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "open_syndrome_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "publish_in": {
+      "type": "string",
+      "format": "uri"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
     "authors": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "clinical_criterias": {
+    "clinical_criteria": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "type": { "type": "string", "enum": ["criteria", "syndrome", "symptom", "diagnosis", "professional_judgment"] },
-          "logical_operator": { 
-            "type": "string", 
-            "enum": ["AND", "OR", "ANDNOT", "AT_LEAST"]
-          },
-          "logical_operator_arguments": {
-            "type": "array",
-            "items": { "type": "integer" },
-            "minItems": 1,
-            "maxItems": 1
-          },
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "operator": { "type": "string", "enum": ["regex"] },
-          "regex_pattern": { "type": "string" },
-          "regex_flags": { "type": "string", "pattern": "^[gimsuy]*$" },
-          "code": {
-            "type": "object",
-            "properties": {
-              "system": { "type": "string" },
-              "code": { "type": "string" },
-              "display": { "type": "string" }
-            },
-            "required": ["system", "code", "display"]
-          },
-          "values": {
-            "type": "array",
-            "items": { "$ref": "#" }
-          }
-        },
-        "required": ["type"],
-        "oneOf": [
-          { "required": ["name"] },
-          { "required": ["values"] }
-        ]
+        "$ref": "#/$defs/criterion"
       }
     },
     "exclusion_criteria": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "type": { "type": "string", "enum": ["diagnosis", "criteria", "symptom"] },
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "operator": { "type": "string", "enum": ["regex"] },
-          "regex_pattern": { "type": "string" },
-          "regex_flags": { "type": "string", "pattern": "^[gimsuy]*$" },
-          "code": {
-            "type": "object",
-            "properties": {
-              "system": { "type": "string" },
-              "code": { "type": "string" },
-              "display": { "type": "string" }
-            },
-            "required": ["system", "code", "display"]
-          }
-        },
-        "required": ["type", "name"]
+        "$ref": "#/$defs/criterion"
       }
     },
     "notes": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "references": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "citation": { "type": "string" },
-          "url": { "type": "string", "format": "uri" }
+          "citation": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
         },
-        "required": ["citation", "url"]
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "deprecated"
+      ]
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   },
-  "required": ["title", "description", "scope", "version", "open_syndrome_version", "publish_in", "published_at", "location", "organization", "clinical_criterias"]
+  "required": [
+    "title",
+    "scope",
+    "version",
+    "open_syndrome_version",
+    "publish_in",
+    "published_at",
+    "location",
+    "language",
+    "organization",
+    "clinical_criteria",
+    "references"
+  ]
 }
