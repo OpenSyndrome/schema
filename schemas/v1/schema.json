@@ -123,6 +123,16 @@
         "broad"
       ]
     },
+    "category": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "probable",
+        "suspected"
+      ],
+      "default": "suspected",
+      "description": "Case definition categories according to Bassil, K. (2008). Case definition. In Encyclopedia of epidemiology (Vol. 2, pp. 133-134). SAGE Publications, Inc., https://doi.org/10.4135/9781412953948"
+    },
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$"
@@ -214,6 +224,7 @@
   "required": [
     "title",
     "scope",
+    "category",
     "version",
     "open_syndrome_version",
     "published_in",
