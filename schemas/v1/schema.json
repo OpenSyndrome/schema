@@ -9,6 +9,7 @@
       "properties": {
         "type": {
           "type": "string",
+          "description": "Type of criterion.\n\n- criteria: Group of criteria or conditions.\n- syndrome: Syndrome (defined by another definition, but used here as a criterion).\n- symptom: just a symptom.\n- diagnosis: The diagnosed disease, which may or may not be followed by a code, e.g. ICD.\n- diagnostic_test: Tests or medical examinations to confirm a diagnosis, e.g. gluplasma glucose.\n- professional_judgment: Professional assessment.\n- epidemiological_history: Travel history or contact with someone with an epidemiological link.\n- demographic_criteria: Factors such as age or sex.",
           "enum": [
             "criteria",
             "syndrome",
@@ -22,15 +23,17 @@
         },
         "logical_operator": {
           "type": "string",
+          "description": "Keywords that represent a logical operation on criteria.\n\nAND: All conditions in this group must be satisfied (true).\nOR: At least one condition in this group must be satisfied.\nAND_NOT: All conditions in this group must not be satisfied (must be false).\nAT_LEAST: Used with the number specified in `logical_operator_arguments`. At least that many conditions must be true.",
           "enum": [
             "AND",
             "OR",
-            "ANDNOT",
+            "AND_NOT",
             "AT_LEAST"
           ]
         },
         "logical_operator_arguments": {
           "type": "array",
+          "description": "Used with `logical_operator = AT_LEAST`. At least that many conditions must be true.",
           "items": {
             "type": "integer"
           },
@@ -38,16 +41,24 @@
           "maxItems": 1
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Criterion label."
         },
         "attribute": {
-          "type": "string"
+          "type": "string",
+          "description": "The reffered attribute.",
+          "examples": ["body_temperature", "age", "onset"]
         },
-        "value": {},
+        "value": {
+          "description": "The reference value for the reffered attribute. It has no type because it could be anything.",
+          "examples": [true, 37.5, "abnormal but non-specific bowel gas pattern"]
+        },
         "description": {
-          "type": "string"
+          "type": "string",
+          "description": "A detailed description of the criterion."
         },
         "operator": {
+          "description": "Comparison operators.\n\n>: Value must be greater than the specified threshold.\n>=: Value must be greater than or equal to the specified threshold.\n<: Value must be less than the specified threshold.\n<=: Value must be less than or equal to the specified threshold.\n==: Value must exactly match the specified value.\n!=: Value must not match the specified value.\nregex: Value must match the specified regular expression pattern.",
           "type": "string",
           "enum": [
             ">",
@@ -60,23 +71,33 @@
           ]
         },
         "regex_pattern": {
-          "type": "string"
+          "type": "string",
+          "description": "Regular expression for evaluation and pattern matching.",
+          "examples": ["deng[u]?e"]
         },
         "regex_flags": {
+          "description": "Regular expression flags for extra configuration.",
           "type": "string",
-          "pattern": "^[gimsuy]*$"
+          "pattern": "^[gimsuy]*$",
+          "examples": ["i"]
         },
         "code": {
           "type": "object",
+          "description": "System agnostic diagnosis code.",
           "properties": {
             "system": {
-              "type": "string"
+              "type": "string",
+              "description": "The diagnosis system used.",
+              "examples": ["ICD-10", "SNOMED-CT"]
             },
             "code": {
-              "type": "string"
+              "type": "string",
+              "examples": ["J11", "A.99", "233604007"]
             },
             "display": {
-              "type": "string"
+              "type": "string",
+              "description": "A label that represents this code.",
+              "examples": ["Pneumonia", "Dengue"]
             }
           },
           "required": [
@@ -111,10 +132,12 @@
   },
   "properties": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "description": "Title of the case definition."
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "description": "Detailed description of a case definition."
     },
     "scope": {
       "type": "string",
