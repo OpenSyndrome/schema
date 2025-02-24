@@ -213,7 +213,8 @@
         "draft",
         "published",
         "deprecated"
-      ]
+      ],
+      "default": "draft"
     },
     "keywords": {
       "type": "array",
