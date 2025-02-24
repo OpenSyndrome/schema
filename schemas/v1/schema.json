@@ -121,7 +121,8 @@
       "enum": [
         "specific",
         "broad"
-      ]
+      ],
+      "description": "A broad definition aims to capture most or all true cases, while a specific definition provides a more accurate description but risks missing some true cases."
     },
     "category": {
       "type": "string",
