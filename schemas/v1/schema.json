@@ -171,7 +171,7 @@
         "type": "string"
       }
     },
-    "clinical_criteria": {
+    "inclusion_criteria": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/criterion"
@@ -233,7 +233,8 @@
     "location",
     "language",
     "organization",
-    "clinical_criteria",
-    "references"
+    "inclusion_criteria",
+    "references",
+    "status"
   ]
 }
