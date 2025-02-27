@@ -46,11 +46,11 @@
         },
         "attribute": {
           "type": "string",
-          "description": "The reffered attribute.",
+          "description": "The referred attribute.",
           "examples": ["body_temperature", "age", "onset"]
         },
         "value": {
-          "description": "The reference value for the reffered attribute. It has no type because it could be anything.",
+          "description": "The reference value for the referred attribute. It has no type because it could be anything.",
           "examples": [true, 37.5, "abnormal but non-specific bowel gas pattern"]
         },
         "description": {
@@ -176,7 +176,7 @@
     "published_at": {
       "type": "string",
       "format": "date-time",
-      "description": "Date and time of publication at Open Syndrome Initiative website.",
+      "description": "Date and time of publication at Open Syndrome Initiative website (UTC).",
       "examples": ["2020-05-30T12:00:00Z"]
     },
     "published_by": {
@@ -199,7 +199,7 @@
     },
     "organization": {
       "type": "string",
-      "description": "The organization responsible for this case definition maintainance",
+      "description": "The organization responsible for this case definition maintenance.",
       "examples": ["Ministry of Health", "The Epidemic Intelligence from Open Sources Initiative"]
     },
     "authors": {
