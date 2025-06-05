@@ -265,6 +265,18 @@
         "type": "string"
       },
       "examples": ["outbreaks", "covid19", "WHO"]
+    },
+    "human_readable_definition": {
+      "type": "string",
+      "description": "A human-readable definition of the case definition, which can be used for display purposes in user interfaces."
+    },
+    "target_public_health_threats": {
+        "type": "array",
+        "description": "List of public health threats that this case definition targets.",
+        "items": {
+            "type": "string",
+            "examples": ["COVID-19", "Influenza", "Extreme Weather Events"]
+        }
     }
   },
   "required": [
