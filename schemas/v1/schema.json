@@ -11,7 +11,7 @@
           "type": "string",
           "description": "Type of criterion.\n\n- criteria: Group of criteria or conditions.\n- syndrome: Syndrome (defined by another definition, but used here as a criterion).\n- symptom: just a symptom.\n- diagnosis: The diagnosed disease, which may or may not be followed by a code, e.g. ICD.\n- diagnostic_test: Tests or medical examinations to confirm a diagnosis, e.g. gluplasma glucose.\n- professional_judgment: Professional assessment.\n- epidemiological_history: Travel history or contact with someone with an epidemiological link.\n- demographic_criteria: Factors such as age or sex.",
           "enum": [
-            "criteria",
+            "criterion",
             "syndrome",
             "symptom",
             "diagnosis",
