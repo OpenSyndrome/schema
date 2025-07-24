@@ -23,11 +23,10 @@
         },
         "logical_operator": {
           "type": "string",
-          "description": "Keywords that represent a logical operation on criteria.\n\nAND: All conditions in this group must be satisfied (true).\nOR: At least one condition in this group must be satisfied.\nAND_NOT: All conditions in this group must not be satisfied (must be false).\nAT_LEAST: Used with the number specified in `logical_operator_arguments`. At least that many conditions must be true.",
+          "description": "Keywords that represent a logical operation on criteria.\n\nAND: All conditions in this group must be satisfied (true).\nOR: At least one condition in this group must be satisfied.\nAT_LEAST: Used with the number specified in `logical_operator_arguments`. At least that many conditions must be true.",
           "enum": [
             "AND",
             "OR",
-            "AND_NOT",
             "AT_LEAST"
           ]
         },
