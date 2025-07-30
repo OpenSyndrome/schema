@@ -172,6 +172,12 @@
       "format": "uri",
       "description": "URL where the narrative format definition was originally published or can be found."
     },
+    "created_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of creation.",
+      "examples": ["2020-05-30"]
+    },
     "published_at": {
       "type": "string",
       "format": "date-time",
