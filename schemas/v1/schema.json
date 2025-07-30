@@ -275,6 +275,10 @@
       "type": "string",
       "description": "A human-readable definition of the case definition, which can be used for display purposes in user interfaces."
     },
+    "surveillance_system_type": {
+      "type": "string",
+      "description": "The type of surveillance system the definition was designed for or is used for."
+    },
     "target_public_health_threats": {
         "type": "array",
         "description": "List of public health threats that this case definition targets.",
