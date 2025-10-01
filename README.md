@@ -7,7 +7,7 @@ The Open Syndrome Definition JSON schema is an open, interoperable format for [c
 ## Contribute
 
 Please feel free to suggest any changes to this format. To ensure that the format is still valid,
-do the validation locally. You will need [npm]().
+do the validation locally. You will need [npm](https://nodejs.org/pt/learn/getting-started/an-introduction-to-the-npm-package-manager).
 Then install [ajv-cli](https://github.com/ajv-validator/ajv-cli)
 and [ajv-formats](https://github.com/ajv-validator/ajv-formats):
 
@@ -28,3 +28,19 @@ ajv validate --spec draft2020 -c ajv-formats -s schemas/v1/schema.json -d brazil
 ```
 
 If you propose any changes, update the [CHANGELOG](CHANGELOG.md) accordingly.
+
+## Citing & Authors
+
+If you find this repository helpful, feel free to cite our publication: The Open Syndrome Definition
+
+```
+@misc{ferreira2025opensyndromedefinition,
+      title={The Open Syndrome Definition}, 
+      author={Ana Paula Gomes Ferreira and Aleksandar Anžel and Izabel Oliva Marcilio de Souza and Helen Hughes and Alex J Elliot and Jude Dzevela Kong and Madlen Schranz and Alexander Ullrich and Georges Hattab},
+      year={2025},
+      eprint={2509.25434},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2509.25434}, 
+}
+```
