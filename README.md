@@ -2,6 +2,8 @@
 
 [![Validate schema](https://github.com/OpenSyndrome/schema/actions/workflows/validate_schema.yml/badge.svg)](https://github.com/OpenSyndrome/schema/actions/workflows/validate_schema.yml)
 
+[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/opensyndrome/case-definitions)
+
 The Open Syndrome Definition JSON schema is an open, interoperable format for [case definitions](https://methods.sagepub.com/ency/edvol/encyc-of-epidemiology/chpt/case-definition).
 
 ## Contribute
