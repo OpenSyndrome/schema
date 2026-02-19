@@ -30,8 +30,6 @@ jobs:
       run: cp schemas/v1/schema.json schemas/latest.json
     - name: Commit schema changes (if any) to latest.json
       uses: stefanzweifel/git-auto-commit-action@v7
-      id: auto-commit-action
-      if: steps.auto-commit-action.outputs.changes_detected == 'true'
       with:
         commit_message: "Update latest.json from v1/schema.json"
         file_pattern: schemas/latest.json
