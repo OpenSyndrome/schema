@@ -130,6 +130,14 @@
     }
   },
   "properties": {
+    "@context": {
+      "description": "JSON-LD context mapping.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "object" },
+        { "type": "array" }
+      ]
+    },
     "title": {
       "type": "string",
       "description": "Title of the case definition."
