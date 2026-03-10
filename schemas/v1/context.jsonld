@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "osd": "https://w3id.org/opensyndrome/core/",
+    "schema": "https://schema.org/",
+    "dc": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "mondo": "http://purl.obolibrary.org/obo/MONDO_",
+    "iao": "http://purl.obolibrary.org/obo/IAO_",
+    "hpo": "http://purl.obolibrary.org/obo/HP_",
+    "doid": "http://purl.obolibrary.org/obo/DOID_
+    
+    "title": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "language": "schema:inLanguage",
+    "location": "schema:spatialCoverage",
+    "organization": "schema:sourceOrganization",
+    "authors": "schema:author",
+    "published_at": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "published_by": "schema:publisher",
+    "published_in": "schema:isPartOf",
+    "keywords": "schema:keywords",
+    "status": "schema:creativeWorkStatus",
+    "human_readable_definition": "iao:0000115",
+    "notes": "schema:comment",
+    "same_as": "schema:sameAs",
+
+    "references": "dc:references",
+    "citation": "dc:bibliographicCitation",
+    "url": "schema:url",
+    "name": "schema:name",
+
+    "scope": "osd:scope",
+    "category": "osd:category",
+    "open_syndrome_version": "osd:openSyndromeVersion",
+    "definition_type": "osd:definitionType",
+    "target_public_health_threats": "osd:targetPublicHealthThreats",
+    "inclusion_criteria": "osd:inclusionCriteria",
+    "type": "osd:type",
+    "logical_operator": "osd:logicalOperator",
+    "logical_operator_arguments": "osd:logicalOperatorArguments",
+    "values": "osd:values",
+    "code": "osd:code",
+    "system": "osd:codingSystem"
+  }
+}
