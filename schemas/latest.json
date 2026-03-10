@@ -130,6 +130,12 @@
     }
   },
   "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI pointing to the JSON Schema that validates this document. Enables machine-readable schema discovery and validation by standard JSON Schema tools.",
+      "examples": ["https://opensyndrome.org/schema/v1/schema.json"]
+    },
     "@context": {
       "description": "JSON-LD context mapping.",
       "anyOf": [
