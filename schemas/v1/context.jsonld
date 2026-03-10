@@ -8,7 +8,9 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "mondo": "http://purl.obolibrary.org/obo/MONDO_",
     "iao": "http://purl.obolibrary.org/obo/IAO_",
-
+    "hpo": "http://purl.obolibrary.org/obo/HP_",
+    "doid": "http://purl.obolibrary.org/obo/DOID_
+    
     "title": "schema:name",
     "description": "schema:description",
     "version": "schema:version",
