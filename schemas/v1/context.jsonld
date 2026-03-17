@@ -9,43 +9,73 @@
     "mondo": "http://purl.obolibrary.org/obo/MONDO_",
     "iao": "http://purl.obolibrary.org/obo/IAO_",
     "hpo": "http://purl.obolibrary.org/obo/HP_",
-    "doid": "http://purl.obolibrary.org/obo/DOID_
-    
+    "doid": "http://purl.obolibrary.org/obo/DOID_",
+
+    "id": "@id",
+    "type": "@type",
+
     "title": "schema:name",
     "description": "schema:description",
     "version": "schema:version",
     "language": "schema:inLanguage",
     "location": "schema:spatialCoverage",
     "organization": "schema:sourceOrganization",
-    "authors": "schema:author",
-    "published_at": {
-      "@id": "schema:datePublished",
-      "@type": "xsd:dateTime"
-    },
-    "published_by": "schema:publisher",
+
+    "authors": { "@id": "schema:author", "@container": "@set" },
+    "published_at": { "@id": "schema:datePublished", "@type": "xsd:dateTime" },
+    "published_by": { "@id": "schema:publisher", "@container": "@set" },
     "published_in": "schema:isPartOf",
-    "keywords": "schema:keywords",
+    "keywords": { "@id": "schema:keywords", "@container": "@set" },
     "status": "schema:creativeWorkStatus",
     "human_readable_definition": "iao:0000115",
-    "notes": "schema:comment",
+    "notes": { "@id": "schema:comment", "@container": "@set" },
     "same_as": "schema:sameAs",
 
-    "references": "dc:references",
+    "references": { "@id": "dc:references", "@container": "@set" },
     "citation": "dc:bibliographicCitation",
-    "url": "schema:url",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
     "name": "schema:name",
 
     "scope": "osd:scope",
     "category": "osd:category",
     "open_syndrome_version": "osd:openSyndromeVersion",
     "definition_type": "osd:definitionType",
-    "target_public_health_threats": "osd:targetPublicHealthThreats",
-    "inclusion_criteria": "osd:inclusionCriteria",
-    "type": "osd:type",
+    "target_public_health_threats": { "@id": "osd:targetPublicHealthThreats", "@container": "@set" },
+
+    "inclusion_criteria": { "@id": "osd:inclusionCriteria", "@container": "@set" },
+    "exclusion_criteria": { "@id": "osd:exclusionCriteria", "@container": "@set" },
+
     "logical_operator": "osd:logicalOperator",
-    "logical_operator_arguments": "osd:logicalOperatorArguments",
-    "values": "osd:values",
-    "code": "osd:code",
-    "system": "osd:codingSystem"
+    "logical_operator_arguments": { "@id": "osd:logicalOperatorArguments", "@container": "@list" },
+    "values": { "@id": "osd:values", "@container": "@set" },
+
+    "code": {
+      "@id": "osd:codeableConcept",
+      "@context": {
+        "code": "osd:codeValue",
+        "system": "osd:codingSystem",
+        "display": "schema:name"
+      }
+    },
+    "system": "osd:codingSystem",
+    "ontology_id": "osd:ontology_id",
+    "attribute": "osd:attribute",
+    "value": "osd:value",
+    "operator": "osd:comparisonOperator",
+    "display": "schema:name",
+    "regex_pattern": "osd:regexPattern",
+    "regex_flags": "osd:regexFlags",
+
+    "criterion": "osd:Criterion",
+    "syndrome": "osd:Syndrome",
+    "symptom": "osd:Symptom",
+    "diagnosis": "osd:Diagnosis",
+    "diagnostic_test": "osd:DiagnosticTest",
+    "professional_judgment": "osd:ProfessionalJudgment",
+    "epidemiological_history": "osd:EpidemiologicalHistory",
+    "demographic_criteria": "osd:DemographicCriteria"
   }
 }
