@@ -29,6 +29,12 @@ To run your changed schema against a JSON definition:
 ajv validate --spec draft2020 -c ajv-formats -s schemas/v1/schema.json -d brazil_dengue.json
 ```
 
+To run JSON-LD validation, you will need [uv](https://docs.astral.sh/uv/) installed. Then run:
+
+```bash
+uv run --no-project bin/validator.py
+```
+
 If you propose any changes, update the [CHANGELOG](CHANGELOG.md) accordingly.
 
 ## Citing & Authors
