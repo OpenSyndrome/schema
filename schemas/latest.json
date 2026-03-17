@@ -56,6 +56,11 @@
           "type": "string",
           "description": "A detailed description of the criterion."
         },
+        "ontology_id": {
+          "type": "string",
+          "description": "The compacted identifier from an ontology e.g. HP:0002615 for Hypotension",
+          "examples": ["hpo:0002045", "mondo:0020674"]
+        },
         "operator": {
           "description": "Comparison operators.\n\n>: Value must be greater than the specified threshold.\n>=: Value must be greater than or equal to the specified threshold.\n<: Value must be less than the specified threshold.\n<=: Value must be less than or equal to the specified threshold.\n==: Value must exactly match the specified value.\n!=: Value must not match the specified value.\nregex: Value must match the specified regular expression pattern.",
           "type": "string",
@@ -143,6 +148,20 @@
         { "type": "object" },
         { "type": "array" }
       ]
+    },
+    "@type": {
+      "type": "string",
+      "description": "Semantic class.",
+      "enum": [
+        "osd:CaseDefinition",
+        "osd:SyndromeDefinition"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Unique ID from Open Syndrome Initiative.",
+      "examples": ["https://opensyndrome.org/definitions/fa02718a-e203-4e31-a30b-9456789aaea0"]
     },
     "title": {
       "type": "string",
