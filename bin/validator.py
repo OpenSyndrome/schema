@@ -24,7 +24,11 @@ try:
 except exceptions.ValidationError as err:
     print(f"Validation failed: {err.message} - {err.json_path}")
 
+with open('schemas/v1/context.jsonld', encoding='utf-8') as f:
+    local_context = json.load(f)
+
 print("\n--- JSON-LD validation ---")
+doc_json['@context'] = local_context['@context']
 try:
     # check if something was not mapped
     expanded = jsonld.expand(doc_json)
@@ -32,7 +36,6 @@ try:
 
     nquads = jsonld.normalize(doc_json, {'algorithm': 'URDNA2015', 'format': 'application/n-quads'})
     print(f"RFD graph {len(nquads.splitlines())} triplas.")
-    print(nquads)
 
-except Exception as e:
-    print(f"❌ Erro ao processar JSON-LD: {e}")
+except Exception as exception:
+    print(f"❌ Erro ao processar JSON-LD: {exception}")
