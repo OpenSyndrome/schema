@@ -1,0 +1,194 @@
+@prefix osd:     <https://w3id.org/opensyndrome/core/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <https://schema.org/> .
+
+<https://w3id.org/opensyndrome/core/> a owl:Ontology ;
+    rdfs:label "Open Syndrome Core Ontology"@en ;
+    rdfs:comment "Vocabulary for the Open Syndrome Definition, an open and interoperable format for case definitions. Terms in this namespace are referenced by the JSON-LD context at schemas/v1/context.jsonld."@en ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    dcterms:creator "Open Syndrome Initiative" ;
+    owl:versionInfo "1.0.0" .
+
+# External terms referenced by this ontology, declared so the ontology stays in OWL 2 DL.
+
+dcterms:creator a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+schema:CreativeWork a owl:Class .
+
+# Top-level definition classes
+
+osd:CaseDefinition a owl:Class ;
+    rdfs:label "Case Definition"@en ;
+    rdfs:comment "A machine-readable definition of the criteria that establish whether an individual is considered a case of a particular disease or condition for surveillance purposes."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+osd:SyndromeDefinition a owl:Class ;
+    rdfs:label "Syndrome Definition"@en ;
+    rdfs:comment "A reusable definition of a syndrome (a clustering of signs and symptoms) that may be referenced from one or more case definitions."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+# Criterion classes
+
+osd:Criterion a owl:Class ;
+    rdfs:label "Criterion"@en ;
+    rdfs:comment "An individual criterion, or a logically combined group of criteria, within a case or syndrome definition."@en .
+
+osd:Syndrome a owl:Class ;
+    rdfs:label "Syndrome Criterion"@en ;
+    rdfs:comment "A criterion that references another syndrome definition."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:Symptom a owl:Class ;
+    rdfs:label "Symptom Criterion"@en ;
+    rdfs:comment "A criterion that expresses a clinical symptom."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:Diagnosis a owl:Class ;
+    rdfs:label "Diagnosis Criterion"@en ;
+    rdfs:comment "A criterion that expresses a diagnosed disease, which may or may not be followed by a code, e.g. ICD."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:DiagnosticTest a owl:Class ;
+    rdfs:label "Diagnostic Test Criterion"@en ;
+    rdfs:comment "A criterion satisfied by a test or medical examination, e.g. plasma glucose."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:ProfessionalJudgment a owl:Class ;
+    rdfs:label "Professional Judgment Criterion"@en ;
+    rdfs:comment "A criterion satisfied by a professional clinical assessment."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:EpidemiologicalHistory a owl:Class ;
+    rdfs:label "Epidemiological History Criterion"@en ;
+    rdfs:comment "A criterion based on travel history or contact with someone with an epidemiological link."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+osd:DemographicCriteria a owl:Class ;
+    rdfs:label "Demographic Criterion"@en ;
+    rdfs:comment "A criterion based on demographic factors such as age or sex."@en ;
+    rdfs:subClassOf osd:Criterion .
+
+# Codeable concept
+
+osd:CodeableConcept a owl:Class ;
+    rdfs:label "Codeable Concept"@en ;
+    rdfs:comment "A concept identified by a code from a coding system, e.g. ICD-10 or SNOMED-CT."@en .
+
+# Object properties
+
+osd:inclusionCriteria a owl:ObjectProperty ;
+    rdfs:label "inclusion criteria"@en ;
+    rdfs:comment "Criteria that must be satisfied for an individual to be considered a case."@en ;
+    rdfs:range osd:Criterion .
+
+osd:exclusionCriteria a owl:ObjectProperty ;
+    rdfs:label "exclusion criteria"@en ;
+    rdfs:comment "Criteria that, if satisfied, exclude an individual from being considered a case."@en ;
+    rdfs:range osd:Criterion .
+
+osd:values a owl:ObjectProperty ;
+    rdfs:label "nested criteria"@en ;
+    rdfs:comment "Sub-criteria belonging to a parent criterion group."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range osd:Criterion .
+
+osd:codeableConcept a owl:ObjectProperty ;
+    rdfs:label "code"@en ;
+    rdfs:comment "System-agnostic diagnosis code attached to a criterion."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range osd:CodeableConcept .
+
+# Datatype properties — definition level
+
+osd:scope a owl:DatatypeProperty ;
+    rdfs:label "scope"@en ;
+    rdfs:comment "Scope of the definition.\n\n- broad: aims to capture most or all true cases.\n- specific: provides a more accurate description but risks missing some true cases."@en ;
+    rdfs:range xsd:string .
+
+osd:category a owl:DatatypeProperty ;
+    rdfs:label "category"@en ;
+    rdfs:comment "Case definition category, following Bassil, K. (2008). Case definition. In Encyclopedia of epidemiology. Expected values: confirmed, probable, suspected."@en ;
+    rdfs:range xsd:string .
+
+osd:openSyndromeVersion a owl:DatatypeProperty ;
+    rdfs:label "Open Syndrome version"@en ;
+    rdfs:comment "Version of the Open Syndrome Definition schema this document conforms to (semver)."@en ;
+    rdfs:range xsd:string .
+
+osd:definitionType a owl:DatatypeProperty ;
+    rdfs:label "definition type"@en ;
+    rdfs:comment "Type of the definition. Expected values: case_definition, syndrome_definition."@en ;
+    rdfs:range xsd:string .
+
+osd:targetPublicHealthThreats a owl:DatatypeProperty ;
+    rdfs:label "target public health threats"@en ;
+    rdfs:comment "Public health threats this case definition targets, e.g. COVID-19, Influenza, Extreme Weather Events."@en ;
+    rdfs:range xsd:string .
+
+# Datatype properties — criterion level
+
+osd:logicalOperator a owl:DatatypeProperty ;
+    rdfs:label "logical operator"@en ;
+    rdfs:comment "Logical operation on nested criteria.\n\n- AND: all conditions must be satisfied.\n- OR: at least one condition must be satisfied.\n- AT_LEAST: at least N conditions must be true, where N is given by osd:logicalOperatorArguments."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+osd:logicalOperatorArguments a owl:DatatypeProperty ;
+    rdfs:label "logical operator arguments"@en ;
+    rdfs:comment "Numeric argument to the logical operator. Used with AT_LEAST to indicate the minimum number of conditions that must hold."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:integer .
+
+osd:attribute a owl:DatatypeProperty ;
+    rdfs:label "attribute"@en ;
+    rdfs:comment "The referred attribute, e.g. body_temperature, age, onset."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+osd:value a owl:DatatypeProperty ;
+    rdfs:label "value"@en ;
+    rdfs:comment "The reference value for the referred attribute. Range is rdfs:Literal because the value may be a string, number, or boolean."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range rdfs:Literal .
+
+osd:comparisonOperator a owl:DatatypeProperty ;
+    rdfs:label "comparison operator"@en ;
+    rdfs:comment "Comparison operator applied between osd:attribute and osd:value.\n\n- >: greater than.\n- >=: greater than or equal.\n- <: less than.\n- <=: less than or equal.\n- ==: exact match.\n- !=: not equal.\n- regex: matches osd:regexPattern."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+osd:regexPattern a owl:DatatypeProperty ;
+    rdfs:label "regex pattern"@en ;
+    rdfs:comment "Regular expression for evaluation and pattern matching, e.g. deng[u]?e."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+osd:regexFlags a owl:DatatypeProperty ;
+    rdfs:label "regex flags"@en ;
+    rdfs:comment "Regular expression flags for extra configuration, drawn from gimsuy."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+osd:ontologyId a owl:DatatypeProperty ;
+    rdfs:label "ontology id"@en ;
+    rdfs:comment "The compacted identifier from an ontology, e.g. hpo:0002045 or mondo:0020674."@en ;
+    rdfs:domain osd:Criterion ;
+    rdfs:range xsd:string .
+
+# Datatype properties — codeable concept
+
+osd:codeValue a owl:DatatypeProperty ;
+    rdfs:label "code value"@en ;
+    rdfs:comment "The code string within a coding system, e.g. J11, A.99, 233604007."@en ;
+    rdfs:domain osd:CodeableConcept ;
+    rdfs:range xsd:string .
+
+osd:codingSystem a owl:DatatypeProperty ;
+    rdfs:label "coding system"@en ;
+    rdfs:comment "The diagnosis system used, e.g. ICD-10 or SNOMED-CT."@en ;
+    rdfs:domain osd:CodeableConcept ;
+    rdfs:range xsd:string .
