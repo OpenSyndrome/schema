@@ -2,7 +2,7 @@
   "@context": {
     "@version": 1.1,
 
-    "osd": "https://w3id.org/opensyndrome/core/",
+    "osd": "https://w3id.org/opensyndrome/ns/",
     "schema": "https://schema.org/",
     "dc": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
