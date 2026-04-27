@@ -11,7 +11,7 @@ from jsonschema import validate, exceptions
 from pyld import jsonld
 from rdflib import Graph
 
-OSD_NS = 'https://w3id.org/opensyndrome/core/'
+OSD_NS = 'https://w3id.org/opensyndrome/ns/'
 
 
 # TODO download from definitions in the future
