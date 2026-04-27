@@ -6,10 +6,10 @@
     "schema": "https://schema.org/",
     "dc": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "mondo": "http://purl.obolibrary.org/obo/MONDO_",
-    "iao": "http://purl.obolibrary.org/obo/IAO_",
-    "hpo": "http://purl.obolibrary.org/obo/HP_",
-    "doid": "http://purl.obolibrary.org/obo/DOID_",
+    "mondo": { "@id": "http://purl.obolibrary.org/obo/MONDO_", "@prefix": true },
+    "iao":   { "@id": "http://purl.obolibrary.org/obo/IAO_",   "@prefix": true },
+    "hpo":   { "@id": "http://purl.obolibrary.org/obo/HP_",    "@prefix": true },
+    "doid":  { "@id": "http://purl.obolibrary.org/obo/DOID_",  "@prefix": true },
 
     "id": "@id",
     "type": "@type",
@@ -61,7 +61,7 @@
       }
     },
     "system": "osd:codingSystem",
-    "ontology_id": "osd:ontology_id",
+    "ontology_id": { "@id": "osd:ontologyId", "@type": "@id" },
     "attribute": "osd:attribute",
     "value": "osd:value",
     "operator": "osd:comparisonOperator",
