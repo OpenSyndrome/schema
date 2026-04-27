@@ -28,10 +28,13 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v4
-    - name: Overwrite latest.json
-      run: cp schemas/v1/schema.json schemas/latest.json
-    - name: Commit schema changes (if any) to latest.json
+    - name: Overwrite latest copies from v1
+      run: |
+        cp schemas/v1/schema.json schemas/latest.json
+        cp schemas/v1/context.jsonld schemas/latest_context.jsonld
+        cp schemas/v1/ontology.ttl schemas/latest_ontology.ttl
+    - name: Commit latest copies (if any changed)
       uses: stefanzweifel/git-auto-commit-action@v7
       with:
-        commit_message: "Update latest.json from v1/schema.json"
-        file_pattern: schemas/latest.json
+        commit_message: "Update latest copies from schemas/v1/"
+        file_pattern: schemas/latest.json schemas/latest_context.jsonld schemas/latest_ontology.ttl
